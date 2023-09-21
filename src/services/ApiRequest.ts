@@ -1,4 +1,5 @@
-import { MoviesResponse } from "../models/UpcomingMovie";
+import { MovieRequest } from "../models/ProfileModel";
+import { MovieDetails, MoviesResponse } from "../models/UpcomingMovie";
 import { getAxiosInstance, getNetworkConfig } from "./BaseService";
 import { Endpoints } from "./EndPoints";
 
@@ -23,6 +24,15 @@ export async function getUpcomingMovies() {
     const axios = getAxiosInstance();
     const res = await axios.get<MoviesResponse>(
       Endpoints.getTopRatedMovies,
+      getNetworkConfig(true)
+    );
+    return res.data;
+  }
+
+  export async function getMovieById(request: MovieRequest) {
+    const axios = getAxiosInstance();
+    const res = await axios.get<MovieDetails>(
+      `${Endpoints.getMovieDetail}/${request.movieId}`,
       getNetworkConfig(true)
     );
     return res.data;

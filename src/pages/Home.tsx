@@ -11,8 +11,12 @@ import {
 import { useEffect, useState } from "react";
 import { Movie } from "../models/UpcomingMovie";
 import { Console } from "console";
+import { TypePredicateKind } from "typescript";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   const upcomingMovieService = useQuery(
     ["upcomingMovieData"],
     getUpcomingMovies
@@ -45,19 +49,23 @@ export default function Home() {
     }
   }, [upcomingMovieService.data, popularMovieService.data]);
 
-  console.log(upcomingMovies);
-
+  const handleMovieSelection = (movieId: number) => {
+    navigate(`/movieDetails/${movieId}`);
+  };
   return (
     <>
       <Stack bgcolor={colors.primary}>
-        hellpo
         <Stack px={"10%"} py={"2vh"}>
           {" "}
           <Typography color={colors.white} fontSize={24}>
             Upcoming
             <Stack direction={"row"} m={3}>
               {upcomingMovies.slice(0, 4).map((movie) => (
-                <InformationCard data={movie} />
+                <InformationCard
+                  data={movie}
+                  onClick={handleMovieSelection}
+                  key={movie.id}
+                />
               ))}
             </Stack>
           </Typography>
@@ -65,7 +73,11 @@ export default function Home() {
             Whats Popular
             <Stack direction={"row"} m={3}>
               {popularMovies.slice(0, 4).map((movie) => (
-                <InformationCard data={movie} />
+                <InformationCard
+                  data={movie}
+                  onClick={handleMovieSelection}
+                  key={movie.id}
+                />
               ))}
             </Stack>
           </Typography>
@@ -73,7 +85,11 @@ export default function Home() {
             Top Rated{" "}
             <Stack direction={"row"} m={3}>
               {topMovies.slice(0, 4).map((movie) => (
-                <InformationCard data={movie} />
+                <InformationCard
+                  key={movie.id}
+                  data={movie}
+                  onClick={handleMovieSelection}
+                />
               ))}
             </Stack>
           </Typography>
