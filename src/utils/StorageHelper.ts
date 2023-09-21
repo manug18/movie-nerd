@@ -1,0 +1,3 @@
+export function getAccessToken() {
+  return "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDRmZWM3Mjk0ZjI1Njg1M2VhYTYwZDM0MWMwNzQ2ZCIsInN1YiI6IjY1MGIwYmI1NTAxY2YyMDExZDU3NmJlNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Kj6x57Tlq32oVBnGsXf3IzEtr3ev4clAJXkPRHID_TY"
+}
