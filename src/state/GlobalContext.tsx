@@ -5,6 +5,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
+import { ProfileResponse } from "../models/ProfileModel";
 
 // Context provider children
 interface PropsToContextProvider {
@@ -13,12 +14,12 @@ interface PropsToContextProvider {
 
 // Keys needed in global context
 type GlobalData = {
-  profile: null;
+  profile: ProfileResponse | null;
 };
 
 // Setters for keys in global context
 interface CreateContextProps extends GlobalData {
-  setProfile?: Dispatch<SetStateAction<null>>;
+  setProfile?: Dispatch<SetStateAction<ProfileResponse | null>>;
 }
 
 export const GlobalContext = createContext<CreateContextProps>({
@@ -26,7 +27,7 @@ export const GlobalContext = createContext<CreateContextProps>({
 });
 
 const GlobalContextProvider = (props: PropsToContextProvider) => {
-  const [profile, setProfile] = useState<null>(null);
+  const [profile, setProfile] = useState<ProfileResponse | null>(null);
 
   const val: CreateContextProps = {
     profile,
