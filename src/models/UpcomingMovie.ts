@@ -74,3 +74,23 @@ export interface ProductionCountryDetails{
     iso_3166_1: string;
     name: string;
 }
+
+export interface MovieCastInformation {
+    id:number;
+    cast:CastDetails[]
+}
+
+export interface CastDetails{
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: string;
+    profile_path: string;
+    cast_id: number;
+    character: string;
+    credit_id: string;
+    order: number;
+    }
