@@ -44,7 +44,6 @@ export default function MovieDetailedInformation() {
       setCastInformation(castService.data.cast);
     }
   }, [movieService.data, castService.data]);
-  console.log(castInformation);
 
   const backdropPath = movieService.data?.backdrop_path;
   const imageUrl = `https://image.tmdb.org/t/p/original${movieService.data?.poster_path}`;

@@ -3,7 +3,10 @@ export interface ProfileResponse {
     type: string;
   }
 
-export interface  MovieRequest {
-    movieId:number
+export interface MovieRequest {
+  movieId:number
+}
+export interface MovieNameRequest{
+  movieName:string
 }
   

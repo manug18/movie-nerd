@@ -8,7 +8,7 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
 } from "../services/ApiRequest";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Movie } from "../models/UpcomingMovie";
 import { Console } from "console";
 import { TypePredicateKind } from "typescript";
@@ -53,12 +53,18 @@ export default function Home() {
   const handleMovieSelection = (movieId: number) => {
     navigate(`/movieDetails/${movieId}`);
   };
+
+  const [movieName, setMovieName] = useState("");
+
+  const handleMovieNameChange = (name: SetStateAction<string>) => {
+    setMovieName(name);
+  };
   return (
     <>
       <Stack bgcolor={colors.primary}>
         <Stack px={"10%"} py={"2vh"}>
           {" "}
-          <SearchComponent />
+          <SearchComponent onMovieChange={handleMovieNameChange} />
           <Typography color={colors.white} fontSize={24}>
             Upcoming
             <Stack direction={"row"} m={3}>

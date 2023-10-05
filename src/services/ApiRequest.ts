@@ -1,4 +1,4 @@
-import { MovieRequest } from "../models/ProfileModel";
+import { MovieNameRequest, MovieRequest } from "../models/ProfileModel";
 import { MovieCastInformation, MovieDetails, MoviesResponse } from "../models/UpcomingMovie";
 import { getAxiosInstance, getNetworkConfig } from "./BaseService";
 import { Endpoints } from "./EndPoints";
@@ -12,7 +12,8 @@ export async function getUpcomingMovies() {
     return res.data;
   }
 
-  export async function getPopularMovies() {
+
+export async function getPopularMovies() {
     const axios = getAxiosInstance();
     const res = await axios.get<MoviesResponse>(
       Endpoints.getPopularMovies,
@@ -20,7 +21,7 @@ export async function getUpcomingMovies() {
     );
     return res.data;
   }
-  export async function getTopRatedMovies() {
+export async function getTopRatedMovies() {
     const axios = getAxiosInstance();
     const res = await axios.get<MoviesResponse>(
       Endpoints.getTopRatedMovies,
@@ -29,10 +30,19 @@ export async function getUpcomingMovies() {
     return res.data;
   }
 
-  export async function getMovieById(request: MovieRequest) {
+export async function getMovieById(request: MovieRequest) {
     const axios = getAxiosInstance();
     const res = await axios.get<MovieDetails>(
       `${Endpoints.getMovieDetail}/${request.movieId}`,
+      getNetworkConfig(true)
+    );
+    return res.data;
+  }
+
+export async function getMoviesBySearch(request: MovieNameRequest) {
+    const axios = getAxiosInstance();
+    const res = await axios.get<MovieDetails>(
+      `${Endpoints.getMovieListBySearch}${request.movieName}`,
       getNetworkConfig(true)
     );
     return res.data;
