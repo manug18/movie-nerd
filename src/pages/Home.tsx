@@ -13,6 +13,7 @@ import { Movie } from "../models/UpcomingMovie";
 import { Console } from "console";
 import { TypePredicateKind } from "typescript";
 import { useNavigate } from "react-router-dom";
+import SearchComponent from "../components/SearchComponent";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ export default function Home() {
       <Stack bgcolor={colors.primary}>
         <Stack px={"10%"} py={"2vh"}>
           {" "}
+          <SearchComponent />
           <Typography color={colors.white} fontSize={24}>
             Upcoming
             <Stack direction={"row"} m={3}>
